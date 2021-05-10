@@ -11,11 +11,11 @@ function Header() {
             <Link className="logo-container" to="/">
                 <Logo className="logo" />
             </Link>
-            <div classname="options">
-                <Link style={{padding: "10px 15px"}} to="/shop">
+            <div className="options">
+                <Link className="option" to="/shop">
                     SHOP
                 </Link>
-                <Link style={{padding: "10px 15px"}} to="/shop">
+                <Link className="option" to="/shop">
                     CONTACT
                 </Link>
             </div>
