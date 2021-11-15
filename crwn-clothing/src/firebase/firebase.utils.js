@@ -1,6 +1,6 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
 
 const config = {
     apiKey: "AIzaSyDhZ8SdpD3IqXWcEm3ia_PjYRvTqfNX6LE",
@@ -10,7 +10,13 @@ const config = {
     messagingSenderId: "285988158101",
     appId: "1:285988158101:web:f8a9c393e82d7a14a8f99c",
     measurementId: "G-39PEEZQ51H"
-};
+  };
+
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    if (!userAuth) return;
+
+    console.log(firestore.doc("users/128fdsakflskf"))
+}
 
 firebase.initializeApp(config);
 
