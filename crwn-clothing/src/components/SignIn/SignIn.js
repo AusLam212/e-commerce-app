@@ -2,7 +2,7 @@ import React from "react";
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth ,signInWithGoogle } from "../../firebase/firebase.utils";
 
 import "./SignIn.scss";
 
@@ -16,10 +16,17 @@ class SignIn extends React.Component {
         }
     }
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
 
-        this.setState({ email: "", password: ""})
+        const { email, password } = this.state;
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({ email: "", password: ""})
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     handleChange = e => {
@@ -37,23 +44,23 @@ class SignIn extends React.Component {
                     <FormInput
                         name="email"
                         type="email"
-                        // value={this.state.email}
-                        handleChange={() => this.handleChange}
+                        value={this.state.email}
+                        handleChange={this.handleChange}
                         label="email"
                         required
                     />
                     <FormInput
                         name="password"
                         type="password"
-                        // value={this.state.password}
-                        handleChange={() => this.handleChange}
+                        value={this.state.password}
+                        handleChange={this.handleChange}
                         label="password"
                         required
                     />
                     <div className="buttons">
                         <CustomButton
                             type="submit"
-                            onClick={() => this.handleSubmit}
+                            onClick={this.handleSubmit}
                         >
                             Sign In
                         </CustomButton>

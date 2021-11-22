@@ -6,7 +6,6 @@ import CustomButton from "../CustomButton/CustomButton";
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 
 import "./SignUp.scss";
-import SignIn from "../SignIn/SignIn";
 
 class SignUp extends React.Component {
     constructor() {
@@ -25,7 +24,7 @@ class SignUp extends React.Component {
 
         const { displayName, email, password, confirmPassword } = this.state;
 
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             alert("Passwords don't match");
             return;
         }
